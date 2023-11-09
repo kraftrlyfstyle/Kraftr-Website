@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import {motion} from 'framer-motion'
+
 import TopBar from '../components/TopBar';
 import landingPageVideo from '../assets/videos/landing-page-video.mp4';
 import shoe1 from '../assets/images/1.png';
@@ -9,11 +10,12 @@ import shoe4 from '../assets/images/4.png';
 import shoe5 from '../assets/images/5.png';
 
 function Home() {
+
   return (
     <>
       <TopBar></TopBar>
 
-      <section id="Video" className='m-8 mt-4'>
+      <section id="Video" className='py-8 px-24'>
         <video src={landingPageVideo} autoPlay={true} muted loop className='rounded-xl'></video>
       </section>
 
