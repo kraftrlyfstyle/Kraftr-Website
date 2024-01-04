@@ -15,9 +15,9 @@ const TopBar = () => {
 
   return (
     <>
-      <section className="rounded-xl m-4 mx-8 p-4 px-8 flex justify-between items-center">
+      <section className="rounded-xl m-4 mx-8 p-4 px-8 flex justify-between items-center bg-gray-100">
         <div id="Left" className="">
-          <p className="cursor-pointer" onMouseOver={()=>{setProductsShown(true);}}>Products</p>
+          <Link to={"/products"} onMouseOver={()=>{setProductsShown(true);}}>Products</Link>
         </div>
         <div id="Center">
           <Link to={"/"} className="text-5xl font-bold">Kraftr</Link>
