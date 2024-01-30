@@ -1,5 +1,3 @@
-import TopBar from '../components/TopBar';
-import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { getShoes } from '../db';
 import { motion } from 'framer-motion';
@@ -29,19 +27,22 @@ const Products = () => {
   // TODO Add other products as well.
 
   return (
-    <div className='flex flex-col'>
-      <TopBar></TopBar>
-      
+    <div className='flex flex-row text'>
+      <div className='w-36 flex flex-col m-8'>
+        Filter
+      </div>
+
+      <div className='flex-1'>
       {
         loading? (<div>Loading</div>) : error? (<div>Error Occurred</div>): (
-          <section className='grid grid-cols-2 md:grid-cols-3 mx-6 mb-4'>
+          <section className='grid grid-cols-2 md:grid-cols-4 m-6'>
             {products.map((shoe)=>{
               return (
               <Link to={`/product/shoe/${shoe.id}`} key={shoe.id}>
                 <motion.div initial={{opacity: 0}} animate={{opacity: 1}} >
-                  <div className='bg-gray-100 rounded-xl p-4 mx-4'>
-                    <img className='rounded-xl mb-2' src={"http://127.0.0.1:8000" + shoe.cover_image} alt="" />
-                    <p>{shoe.name}</p>
+                  <div className='m-4'>
+                    <img className='rounded-sm mb-2' src={"http://127.0.0.1:8000" + shoe.cover_image} alt="" />
+                    <p>Kraftr <b>{shoe.name}</b> {shoe.shoe_type.name}</p>
                   </div>
                 </motion.div>
               </Link>)
@@ -49,8 +50,8 @@ const Products = () => {
           </section>
         )
       }
-      
-      <Footer></Footer>
+      </div>
+
     </div>
   )
 }

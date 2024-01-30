@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
-import {motion} from 'framer-motion'
-
-import TopBar from '../components/TopBar';
+import {motion, AnimatePresence, useInView} from 'framer-motion'
 import Footer from '../components/Footer';
+import { Link } from "react-router-dom"
 
+import { MdShoppingBag } from "react-icons/md";
+import { MdMenu } from "react-icons/md";
 import landingPageVideo from '../assets/videos/landing-page-video.mp4';
 import shoe1 from '../assets/images/1.png';
 import shoe2 from '../assets/images/2.png';
@@ -11,57 +12,147 @@ import shoe3 from '../assets/images/3.png';
 import shoe4 from '../assets/images/4.png';
 import shoe5 from '../assets/images/5.png';
 
+import arrow from '../assets/images/Arrow.png';
+import bag1 from '../assets/images/bag-1.png';
+
+import ig from '../assets/images/ig.png';
+import linkedin from '../assets/images/linkedin.png';
+
 function Home() {
+  const [menuBar, setMenuBar] = useState(false)
+  const videoRef = useRef()
+  const inView = useInView(videoRef, {amount: .5})
 
   return (
     <>
-      <TopBar></TopBar>
+      <AnimatePresence>
+        { 
+          inView &&
+          <motion.section 
+            initial={{ opacity:0, y: -20 }} 
+            animate={{opacity: 1, y: 0}} 
+            exit={{opacity: 0, y:-20}} 
+            className="rounded-xl m-4 mx-8 p-4 px-8 flex justify-between items-center bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-5 text-[#bbbbbb] fixed left-4 right-4 z-50"
+            >
 
-      <section id="Video" className='py-8 px-24'>
-        <video src={landingPageVideo} autoPlay={true} muted loop className='rounded-xl'></video>
+            <div id="Left" className="">
+              <Link to={"/products"}><MdShoppingBag size={28} /></Link>
+            </div>
+
+            <div id="Center">
+              <Link to={"/"} className="text-4xl tracking-widest font-bold">KRAFTR</Link>
+            </div>
+
+            <div id="Right" className="">
+              <button onClick={()=>{setMenuBar(true)}}><MdMenu size={28} /></button>
+            </div>
+
+          </motion.section>
+        }
+      </AnimatePresence>
+      
+
+      <AnimatePresence>
+        {
+          menuBar && 
+          <motion.section 
+            initial={{x:400}} 
+            animate={{x:0}} 
+            exit={{x:400}}
+            transition={{type: "tween"}} 
+            className='h-screen bg-white w-48 flex flex-col justify-between fixed right-0 z-50  bg-clip-padding backdrop-filter backdrop-blur-sm text-[#bbbbbb] bg-opacity-20  items-start pl-8 text'
+            onMouseLeave={()=>{setMenuBar(false)}}
+          >
+            <div className="flex flex-col">
+            </div>
+            <div className="flex flex-col">
+              <Link to={'/products'} className='mb-4 hover:text-gray-200 transition-all'>Shop</Link>
+              <button className='mb-4 hover:text-gray-200 transition-all'>About Page</button>
+              <button className='mb-4 hover:text-gray-200 transition-all'>Contact Us</button>
+            </div>
+            <div className="flex flex-row mb-6 items-center">
+              <img src={ig} alt="instagram" className='h-8 mr-3' />
+              <img src={linkedin} alt="linkedin" className='h-7 rounded-md ' />
+            </div>
+            
+          </motion.section>
+        } 
+      </AnimatePresence>
+
+
+      <section 
+        id="Video" 
+        className='h-full bg-black px-36 pt-12'
+      >
+        <video ref={videoRef} src={landingPageVideo} autoPlay={true} muted loop className=''></video>
       </section>
 
-      <motion.section id='Slogan' className='my-8 h-56 rounded-xl flex  flex-col items-center justify-center '
-        initial = {{
-          y: -80,
-          opacity: 0
-        }}
-        whileInView={{
-          y: 0,
-          opacity: 1
-        }}
-        viewport={{
-          amount: .1
-        }}
-        transition={{
-          type: 'tween',
-          duration: .5
-        }}
-        >
-        <div className='text-7xl mb-6'>
-          We Craft Fashion
-        </div>
-        <div className='text-2xl'>
-          with a handcrafted touch
-        </div>
+
+      <motion.section
+        id='Bag-1'
+        className='h-screen w-full bg-[#DAD5D1] grid grid-cols-4 grid-rows-6'>
+          <div className='col-span-2 border-r-[1px] border-b-[1px] border-black'>
+          </div>
+          <div className='col-span-1 border-r-[1px] border-b-[1px] border-black'>
+          </div>
+          <div 
+            id='Shop'
+            className='col-span-[.5] border-b-[1px] border-black'>
+              <div className='flex flex-row w-3/4 h-full m-auto items-center justify-center'>
+                <MdShoppingBag size={32} className='mr-8' />
+                <MdMenu size={32} />
+              </div>
+          </div>
+          <div 
+            id='Bag Name' 
+            className='col-span-2 row-span-4 border-r-[1px] border-b-[1px] border-black flex flex-col items-center justify-center text'>
+              <div className='w-3/4'>
+                <h2 className="font-bold text text-4xl tracking-wider mb-4 ">DenimCraft Carryall</h2>
+                <p className='text mb-12 leading-[1.2 rem]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button className='border-[1px] border-black px-6 py-2 hover:bg-black hover:text-gray-300 transition-all'>View More</button>
+              </div>
+          </div>
+          <div className='col-span-1 row-span-5 border-r-[1px] border-black flex items-center justify-center pr-12'>
+            <img src={bag1} alt="" className='' />
+          </div>
+          <div className='col-span-[.5] col-span-1 row-span-5 border-black  pr-12'>
+            <div className='relative h-full w-full flex items-center justify-center'>
+              <button className='absolute left-[-12%] top-[35%] rounded-[9999px] border-[1px] border-black bg-[#A3B5C1] py-8 px-5'><img src={arrow} alt="" className='w-7' /></button>
+              <img src={bag1} alt="" className='' />
+            </div>
+          </div>
+          <div 
+            id='Social Media Icons' 
+            className='col-span-2 row-span-1 border-r-[1px] border-black'>
+              <div className='w-3/4 h-full flex flex-row items-center m-auto'>
+                <img src={ig} alt="instagram" className='h-8 mr-3' />
+                <img src={linkedin} alt="linkedin" className='h-7 rounded-md ' />
+              </div>
+          </div>
+        
+      </motion.section>
+
+
+      <motion.section 
+        id='Hero' 
+        className='my-8 h-56 rounded-xl flex flex-col items-center justify-center text'
+        initial = {{ y: -80, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ amount: .1 }}
+        transition={{ type: 'tween', duration: .5 }}
+      >
+        <div className='text-7xl mb-6'>We Craft Fashion </div>
+        <div className='text-2xl'>with a handcrafted touch</div>
       </motion.section>
       
-      <motion.section id='Shoes'
+
+      <motion.section 
+        id='Shoes Gallery'
         className='w-full m-auto my-12 h-96 rounded-xl flex flex-row items-center justify-center'
-        initial={{
-          scale: 0.8,
-          opacity: 0
-        }}
-        whileInView={{
-          scale: 1,
-          opacity: 1
-        }}
-        viewport={{
-          amount: .1
-        }}
-        transition={{
-          duration: .5
-        }}
+        initial={{ scale: 0.8, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ amount: .1 }}
+        transition={{ duration: .5 }}
         >
         {
           [
@@ -70,18 +161,14 @@ function Home() {
             {id: 3, image: shoe3, backgroundPosX: "50%"}, 
             {id: 4, image: shoe4, backgroundPosX: "75%"}, 
             {id: 5, image: shoe5, backgroundPosX: "100%"}
-          ].map((item)=>{return <motion.div key={item.id} className='w-24 rounded-xl mx-[0.6rem] h-96 shadow-md'
-          initial={{
-            scale: 0.9,
-            width: '6rem'
-          }}
-          whileHover={{
-            scale: 1,
-            width: '36rem',
-            backgroundSize: "cover"
-          }}
-          transition={{duration: 1, ease: "easeInOut"}} 
-          style={{ backgroundImage:`url(${item.image})`, backgroundSize: "cover", backgroundPositionX: `${item.backgroundPosX}`  }} />})
+          ].map((item)=>{return (
+            <motion.div key={item.id} className='w-24 rounded-xl mx-[0.6rem] h-96 shadow-md'
+              initial={{ scale: 0.9, width: '6rem' }}
+              whileHover={{ scale: 1, width: '36rem', backgroundSize: "cover" }}
+              transition={{duration: 1, ease: "easeInOut"}} 
+              style={{ backgroundImage:`url(${item.image})`, backgroundSize: "cover", backgroundPositionX: `${item.backgroundPosX}`  }} 
+            />
+          )})
         }
       </motion.section>
 

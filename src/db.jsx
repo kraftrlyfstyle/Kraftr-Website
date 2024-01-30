@@ -15,6 +15,7 @@ if (dev) {
 async function getShoes() {
   try {
     let response = await axios.get(baseUrl + "products/shoes/get");
+    console.log(response)
     return [true, response.data];
   } catch (e) {
     return [false, e];

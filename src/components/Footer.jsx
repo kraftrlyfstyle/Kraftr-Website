@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <section id='Footer' className='flex flex-row py-16 w-full justify-between px-32 bg-gray-100'>
+    <section id='Footer' className='flex flex-row py-16 w-full justify-between px-32 text bg-[#f6f3ec]'>
       <div className='flex flex-col mx-4'>
         <p className='font-bold mb-2'>Kraftr</p>
         <p className='text-xs'>Making a better future, one step at a time</p>
