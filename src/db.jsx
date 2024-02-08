@@ -1,15 +1,23 @@
 import axios from 'axios';
 
 let dev = true;
+
 let baseUrl = "";
+let imageUrl = "";
 // let tokenUrl = "";
 
 if (dev) {
+  imageUrl = "http://127.0.0.1:8000";
   baseUrl = "http://127.0.0.1:8000/api/v1/";
   // tokenUrl = "http://127.0.0.1:8000/token";
 } else {
+  imageUrl = "https://truedoapi-1-u8581356.deta.app/";
   baseUrl = "https://truedoapi-1-u8581356.deta.app/api/v1/";
   // tokenUrl = "https://truedoapi-1-u8581356.deta.app/token";
+}
+
+function getImageUrl(path) {
+  return imageUrl + path.substring();
 }
 
 async function getShoes() {
@@ -31,4 +39,46 @@ async function getShoesById(id) {
   }
 }
 
-export {getShoes, getShoesById}
+async function login(email, password){
+  try {
+    let response = await axios.post(baseUrl + "user/login", 
+      {email: email, password: password}, 
+      {headers: {"Content-Type": "application/json"}}
+    );
+    return [true, response.data];
+  } catch (e) {
+    return [false, await JSON.stringify(e.data)];
+  }
+}
+
+async function getCart(token) {
+  try {
+    let response = await axios.get(baseUrl + "user/cart", 
+      {headers: {"Authorization": "Token " + token.toString()}}
+    );
+    return [true, response.data];
+  } catch (e) {
+    console.log(e);
+    return [false, await JSON.stringify(e.data)];
+  }
+}
+
+async function deleteCart(token, product_id) {
+  try {
+    let response = await axios.post(baseUrl + "user/cart/delete/" + product_id, 
+      {}, 
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Token " + token.toString()
+        }
+      }
+    );
+    return [true, response.data];
+  } catch (e) {
+    return [false, await JSON.stringify(e.data)];
+  }
+}
+
+
+export {getShoes, getShoesById, login, getCart, deleteCart, getImageUrl}
