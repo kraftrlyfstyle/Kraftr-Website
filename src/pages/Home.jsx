@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react';
-import {motion, AnimatePresence, useInView} from 'framer-motion'
+import {motion, AnimatePresence, useInView} from 'framer-motion';
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom"
 
-import { MdShoppingBag } from "react-icons/md";
-import { MdMenu } from "react-icons/md";
+import { MdShoppingBag, MdOutlineArrowForward, MdMenu } from "react-icons/md"; 
 import landingPageVideo from '../assets/videos/landing-page-video.mp4';
 import shoe1 from '../assets/images/1.png';
 import shoe2 from '../assets/images/2.png';
@@ -17,6 +16,7 @@ import bag1 from '../assets/images/bag-1.png';
 
 import ig from '../assets/images/ig.png';
 import linkedin from '../assets/images/linkedin.png';
+import { IoLogoInstagram, IoLogoLinkedin } from "react-icons/io5";
 
 function Home() {
   const [menuBar, setMenuBar] = useState(false)
@@ -29,10 +29,12 @@ function Home() {
         { 
           inView &&
           <motion.section 
+
             initial={{ opacity:0, y: -20 }} 
             animate={{opacity: 1, y: 0}} 
             exit={{opacity: 0, y:-20}} 
-            className="rounded-xl m-4 mx-8 p-4 px-8 flex justify-between items-center bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-5 text-[#bbbbbb] fixed left-4 right-4 z-50"
+            
+            className="m-4 mx-8 p-4 px-8 flex justify-between items-center bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-5 text-[#ffffff] fixed left-4 right-4 z-50"
             >
 
             <div id="Left" className="">
@@ -71,8 +73,8 @@ function Home() {
               <button className='mb-4 hover:text-gray-200 transition-all'>Contact Us</button>
             </div>
             <div className="flex flex-row mb-6 items-center">
-              <img src={ig} alt="instagram" className='h-8 mr-3' />
-              <img src={linkedin} alt="linkedin" className='h-7 rounded-md ' />
+              <IoLogoInstagram className='mr-2.5 hover:text-gray-200 transition-all cursor-pointer' size={20}/>
+              <IoLogoLinkedin size={20} className='hover:text-gray-200 transition-all cursor-pointer'/>
             </div>
             
           </motion.section>
@@ -125,8 +127,8 @@ function Home() {
             id='Social Media Icons' 
             className='col-span-2 row-span-1 border-r-[1px] border-black'>
               <div className='w-3/4 h-full flex flex-row items-center m-auto'>
-                <img src={ig} alt="instagram" className='h-8 mr-3' />
-                <img src={linkedin} alt="linkedin" className='h-7 rounded-md ' />
+              <IoLogoInstagram className='mr-2.5 transition-all cursor-pointer' size={30}/>
+              <IoLogoLinkedin size={30} className='cursor-pointer'/>
               </div>
           </div>
         
@@ -165,7 +167,7 @@ function Home() {
             <motion.div key={item.id} className='w-24 rounded-xl mx-[0.6rem] h-96 shadow-md'
               initial={{ scale: 0.9, width: '6rem' }}
               whileHover={{ scale: 1, width: '36rem', backgroundSize: "cover" }}
-              transition={{duration: 1, ease: "easeInOut"}} 
+              transition={{duration: 0.5, ease: "easeInOut"}} 
               style={{ backgroundImage:`url(${item.image})`, backgroundSize: "cover", backgroundPositionX: `${item.backgroundPosX}`  }} 
             />
           )})
