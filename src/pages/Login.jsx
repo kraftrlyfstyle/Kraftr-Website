@@ -34,6 +34,7 @@ const Login = (props) => {
   
 
   return (
+    
     <div className="h-[100dvh] w-full flex flex-col items-center justify-center text">
       <form className="flex flex-col items-center justify-center" onSubmit={handleForm}>
         <input className="border-[1px] outline-none border-black p-2 rounded-xl" placeholder="email" name="email" type="email" />
