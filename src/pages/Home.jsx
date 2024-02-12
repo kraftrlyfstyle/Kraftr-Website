@@ -113,7 +113,7 @@ function Home() {
               <div className='w-3/4'>
                 <h2 className="font-bold text text-4xl tracking-wider mb-4 ">DenimCraft Carryall</h2>
                 <p className='text mb-12 leading-[1.2 rem]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <button className='border-[1px] border-black px-6 py-2 hover:bg-black hover:text-gray-300 transition-all'>View More</button>
+                <Link to={"/products"}><button className='border-[1px] border-black px-8 py-4 hover:bg-[#766261] hover:text-white text-2xl transition-all w-full tracking-wider hover:tracking-widest'>VIEW MORE</button></Link>
               </div>
           </div>
           <div className='col-span-1 row-span-5 border-r-[1px] border-black flex items-center justify-center pr-12'>
