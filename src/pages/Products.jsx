@@ -44,7 +44,7 @@ const Products = () => {
       </div>
     </div>
 
-    <div className='flex flex-row text bg-[#F4ECE9]'>
+    <div className='flex flex-row text bg-[#F4ECE9] border-b border-black pb-4'>
       <div className='w-36 flex flex-col m-8'>
         <p className='text-lg mb-2'><b>FILTERS</b></p>
         <p>Price</p>
@@ -66,7 +66,8 @@ const Products = () => {
                   <div>
                     <p className='text-lg mt-4 mb-2 text-center'>Kraftr <b>{shoe.name}</b> {shoe.shoe_type.name}</p>
                     <p className='text-xl mb-3 text-center'>₹{shoe.price}</p>
-                    <button className='w-full border-[1px] border-black px-6 py-4 hover:bg-[#766261] hover:text-white text-lg transition-all'>ADD TO CART</button>
+                    <button className='w-full border-[1px] border-black px-6 py-4 hover:bg-[#766261] hover:text-white text-lg transition-all tracking-wider hover:tracking-widest'>ADD TO CART</button>
+
                   </div>
                     
               </motion.div>)
