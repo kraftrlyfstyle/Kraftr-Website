@@ -130,7 +130,7 @@ function Home() {
             className='col-span-2 row-span-1 border-r-[1px] border-black'>
               <div className='w-3/4 h-full flex flex-row items-center m-auto'>
               <IoLogoInstagram className='mr-2.5 transition-all cursor-pointer' size={30}/>
-              <IoLogoLinkedin size={30} className='cursor-pointer'/>
+              <IoLogoLinkedin size={30} className='cursor-pointer transition-all'/>
               </div>
           </div>
         
