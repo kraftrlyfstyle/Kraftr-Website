@@ -57,7 +57,7 @@ const Products = () => {
           <section className='grid grid-cols-4 md:grid-cols-3'>
             {products.map((shoe)=>{
               return (
-              <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='flex flex-col p-4 border-l-[1px] border-b-[1px] border-black last-of-type:border-r-[1px]' key={shoe.id}>
+              <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='flex flex-col p-4 border-l-[1px] border-b-[1px] border-black last-of-type:border-r-[1px] hover:bg-[#eae0dd] transition-all' key={shoe.id}>
 
                   <Link to={`/product/shoe/${shoe.id}`} className='flex-1 flex'>
                     <img className='rounded-sm ' src={"http://127.0.0.1:8000" + shoe.cover_image} alt="" />
