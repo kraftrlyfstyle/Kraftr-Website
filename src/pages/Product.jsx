@@ -44,11 +44,12 @@ const Product = () => {
 
         <div className="flex basis-2/3  bg-[#F4ECE9] px-11 py-7 flex-col">
           <div className="flex flex-col">
-            <Link to={"/"} className="text-4xl tracking-widest font-bold my-5 mx-10">
+            <Link to={"/"} className="text-4xl tracking-widest font-bold mt-5 mx-10 mb-10">
               KRAFTR
             </Link>
-            <div className="flex justify-center">
-              <p className="text text-4xl">Kraftr Bag Tops 1</p>
+            <div className="flex mt-10 flex-col px-11">
+              <p className="text text-5xl font-semibold">Kraftr {shoe.name}</p>
+              <p className="text text-3xl pt-5">₹{shoe.price}</p>
             </div>
           </div>
 
