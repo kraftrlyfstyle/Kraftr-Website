@@ -68,6 +68,8 @@ function Home() {
             <div className="flex flex-col">
             </div>
             <div className="flex flex-col">
+
+              <Link to={'/login'} className='mb-4 hover:text-gray-200 transition-all '>Login</Link>
               <Link to={'/products'} className='mb-4 hover:text-gray-200 transition-all'>Shop</Link>
               <button className='mb-4 hover:text-gray-200 transition-all'>About Page</button>
               <button className='mb-4 hover:text-gray-200 transition-all'>Contact Us</button>
@@ -111,7 +113,7 @@ function Home() {
               <div className='w-3/4'>
                 <h2 className="font-bold text text-4xl tracking-wider mb-4 ">DenimCraft Carryall</h2>
                 <p className='text mb-12 leading-[1.2 rem]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <button className='border-[1px] border-black px-6 py-2 hover:bg-black hover:text-gray-300 transition-all'>View More</button>
+                <Link to={"/products"}><button className='border-[1px] border-black px-8 py-4 hover:bg-[#766261] hover:text-white text-2xl transition-all w-full tracking-wider hover:tracking-widest'>VIEW MORE</button></Link>
               </div>
           </div>
           <div className='col-span-1 row-span-5 border-r-[1px] border-black flex items-center justify-center pr-12'>
@@ -128,7 +130,7 @@ function Home() {
             className='col-span-2 row-span-1 border-r-[1px] border-black'>
               <div className='w-3/4 h-full flex flex-row items-center m-auto'>
               <IoLogoInstagram className='mr-2.5 transition-all cursor-pointer' size={30}/>
-              <IoLogoLinkedin size={30} className='cursor-pointer'/>
+              <IoLogoLinkedin size={30} className='cursor-pointer transition-all'/>
               </div>
           </div>
         

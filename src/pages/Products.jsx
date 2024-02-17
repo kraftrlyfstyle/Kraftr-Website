@@ -60,7 +60,7 @@ const Products = () => {
       </div>
     </div>
 
-    <div className='flex flex-row text bg-[#F4ECE9]'>
+    <div className='flex flex-row text bg-[#F4ECE9] border-b border-black pb-4'>
       <div className='w-36 flex flex-col m-8'>
         <p className='text-lg mb-2'><b>FILTERS</b></p>
         <p>Price</p>
@@ -73,7 +73,7 @@ const Products = () => {
           <section className='grid grid-cols-4 md:grid-cols-3'>
             {products.map((product)=>{
               return (
-              <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='flex flex-col p-4 border-l-[1px] border-b-[1px] border-black last-of-type:border-r-[1px]' key={product.id}>
+              <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='flex flex-col p-4 border-l-[1px] border-b-[1px] border-black last-of-type:border-r-[1px] hover:bg-[#eae0dd] transition-all' key={product.id}>
 
                   <Link to={`/product/shoe/${product.id}`} className='flex-1 flex items-center justify-center'>
                     <img className='rounded-sm h-fit w-fit' src={"http://127.0.0.1:8000" + product.cover_image} alt="" />
@@ -84,7 +84,7 @@ const Products = () => {
                       product.shoe_type ? <p className='text-lg mt-4 mb-2 text-center'>Kraftr <b>{product.name}</b> {product.shoe_type.name}</p> : <p className='text-lg mt-4 mb-2 text-center'>Kraftr <b>{product.name}</b></p>
                     }
                     <p className='text-xl mb-3 text-center'>₹{product.price}</p>
-                    <button onClick={()=>{handleAddCart(product.id)}} className='w-full border-[1px] border-black px-6 py-4 hover:bg-[#766261] hover:text-white text-lg transition-all'>ADD TO CART</button>
+                    <button onClick={()=>{handleAddCart(product.id)}} className='w-full border-[1px] border-black px-6 py-4 hover:bg-[#766261] hover:text-white text-lg transition-all tracking-wider hover:tracking-widest'>ADD TO CART</button>
                   </div>
                     
               </motion.div>)
