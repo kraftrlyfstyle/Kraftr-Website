@@ -20,6 +20,16 @@ function getImageUrl(path) {
   return imageUrl + path.substring();
 }
 
+async function getProducts() {
+  try {
+    let response = await axios.get(baseUrl + "products/get");
+    console.log(response)
+    return [true, response.data];
+  } catch (e) {
+    return [false, e];
+  }
+}
+
 async function getShoes() {
   try {
     let response = await axios.get(baseUrl + "products/shoes/get");
@@ -80,5 +90,22 @@ async function deleteCart(token, product_id) {
   }
 }
 
+async function addCart(token, product_id) {
+  try {
+    let response = await axios.post(baseUrl + "user/cart/add", 
+      {"id": product_id}, 
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Token " + token.toString()
+        }
+      }
+    );
+    return [true, response.data];
+  } catch (e) {
+    return [false, await JSON.stringify(e.data)];
+  }
+}
 
-export {getShoes, getShoesById, login, getCart, deleteCart, getImageUrl}
+
+export {getShoes, getShoesById, login, getCart, getProducts, deleteCart, addCart, getImageUrl}

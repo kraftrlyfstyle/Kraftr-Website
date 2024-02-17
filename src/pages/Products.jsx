@@ -1,28 +1,44 @@
 import { useState, useEffect } from 'react';
-import { getShoes } from '../db';
+import { addCart, getProducts, getShoes } from '../db';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { MdShoppingCart, MdMenu } from "react-icons/md";
 
 const Products = () => {
+  const [token, setToken] = useState("")
   const [products, setProducts] = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false);
 
   async function getProductsLocal() {
-    let [success, responseOrError] = await getShoes();
+    let [success, responseOrError] = await getProducts();
     setLoading(false);
 
     if(!success){
       setError(true);
       return;
     }
+
+    setProducts([...responseOrError.shoes, ...responseOrError.bags]);
+  }
+ 
+  async function handleAddCart(id) {
+    let res = await addCart(token, id)
     
-    setProducts(responseOrError.shoes);
+    if (res[0] == false){
+      // TODO Add toast & Remove Error component
+      setError(true);
+      return
+    }
   }
 
   useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token == "" || token == null || token == undefined) {
+      window.location.replace("/");
+    }
+    setToken(token);
     getProductsLocal();
   }, [])
   
@@ -55,18 +71,20 @@ const Products = () => {
       {
         loading? (<div>Loading</div>) : error? (<div>Error Occurred</div>): (
           <section className='grid grid-cols-4 md:grid-cols-3'>
-            {products.map((shoe)=>{
+            {products.map((product)=>{
               return (
-              <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='flex flex-col p-4 border-l-[1px] border-b-[1px] border-black last-of-type:border-r-[1px]' key={shoe.id}>
+              <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='flex flex-col p-4 border-l-[1px] border-b-[1px] border-black last-of-type:border-r-[1px]' key={product.id}>
 
-                  <Link to={`/product/shoe/${shoe.id}`} className='flex-1 flex'>
-                    <img className='rounded-sm ' src={"http://127.0.0.1:8000" + shoe.cover_image} alt="" />
+                  <Link to={`/product/shoe/${product.id}`} className='flex-1 flex items-center justify-center'>
+                    <img className='rounded-sm h-fit w-fit' src={"http://127.0.0.1:8000" + product.cover_image} alt="" />
                   </Link>
 
                   <div>
-                    <p className='text-lg mt-4 mb-2 text-center'>Kraftr <b>{shoe.name}</b> {shoe.shoe_type.name}</p>
-                    <p className='text-xl mb-3 text-center'>₹{shoe.price}</p>
-                    <button className='w-full border-[1px] border-black px-6 py-4 hover:bg-[#766261] hover:text-white text-lg transition-all'>ADD TO CART</button>
+                    {
+                      product.shoe_type ? <p className='text-lg mt-4 mb-2 text-center'>Kraftr <b>{product.name}</b> {product.shoe_type.name}</p> : <p className='text-lg mt-4 mb-2 text-center'>Kraftr <b>{product.name}</b></p>
+                    }
+                    <p className='text-xl mb-3 text-center'>₹{product.price}</p>
+                    <button onClick={()=>{handleAddCart(product.id)}} className='w-full border-[1px] border-black px-6 py-4 hover:bg-[#766261] hover:text-white text-lg transition-all'>ADD TO CART</button>
                   </div>
                     
               </motion.div>)
