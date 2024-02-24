@@ -22,6 +22,10 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
+.logo-text {
+  font-family: 'Noto Serif Display', serif;
+}
+
 html {
   color: var(--text);
 }

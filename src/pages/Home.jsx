@@ -3,7 +3,7 @@ import {motion, AnimatePresence, useInView} from 'framer-motion';
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom"
 
-import { MdShoppingBag, MdOutlineArrowForward, MdMenu } from "react-icons/md"; 
+import { MdShoppingBag, MdMenu } from "react-icons/md"; 
 import landingPageVideo from '../assets/videos/landing-page-video.mp4';
 import shoe1 from '../assets/images/1.png';
 import shoe2 from '../assets/images/2.png';
@@ -14,8 +14,6 @@ import shoe5 from '../assets/images/5.png';
 import arrow from '../assets/images/Arrow.png';
 import bag1 from '../assets/images/bag-1.png';
 
-import ig from '../assets/images/ig.png';
-import linkedin from '../assets/images/linkedin.png';
 import { IoLogoInstagram, IoLogoLinkedin } from "react-icons/io5";
 
 function Home() {
@@ -94,7 +92,7 @@ function Home() {
 
       <motion.section
         id='Bag-1'
-        className='h-screen w-full bg-[#DAD5D1] grid grid-cols-4 grid-rows-6'>
+        className='h-screen w-full bg-[#DAD5D1] grid grid-cols-4 grid-rows-6 border-b-[1px] border-black'>
           <div className='col-span-2 border-r-[1px] border-b-[1px] border-black'>
           </div>
           <div className='col-span-1 border-r-[1px] border-b-[1px] border-black'>
@@ -136,45 +134,46 @@ function Home() {
         
       </motion.section>
 
-
-      <motion.section 
-        id='Hero' 
-        className='my-8 h-56 rounded-xl flex flex-col items-center justify-center text'
-        initial = {{ y: -80, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ amount: .1 }}
-        transition={{ type: 'tween', duration: .5 }}
-      >
-        <div className='text-7xl mb-6'>We Craft Fashion </div>
-        <div className='text-2xl'>with a handcrafted touch</div>
-      </motion.section>
-      
-
-      <motion.section 
-        id='Shoes Gallery'
-        className='w-full m-auto my-12 h-96 rounded-xl flex flex-row items-center justify-center'
-        initial={{ scale: 0.8, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ amount: .1 }}
-        transition={{ duration: .5 }}
+      <div className='bg-[#DAD5D1] py-12'>
+        <motion.section 
+          id='Hero' 
+          className='mb-8 h-56 rounded-xl flex flex-col items-center justify-center text '
+          initial = {{ y: -80, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ amount: .1 }}
+          transition={{ type: 'tween', duration: .5 }}
         >
-        {
-          [
-            {id: 1, image: shoe1, backgroundPosX: "10%"}, 
-            {id: 2, image: shoe2, backgroundPosX: "35%"}, 
-            {id: 3, image: shoe3, backgroundPosX: "50%"}, 
-            {id: 4, image: shoe4, backgroundPosX: "75%"}, 
-            {id: 5, image: shoe5, backgroundPosX: "100%"}
-          ].map((item)=>{return (
-            <motion.div key={item.id} className='w-24 rounded-xl mx-[0.6rem] h-96 shadow-md'
-              initial={{ scale: 0.9, width: '6rem' }}
-              whileHover={{ scale: 1, width: '36rem', backgroundSize: "cover" }}
-              transition={{duration: 0.5, ease: "easeInOut"}} 
-              style={{ backgroundImage:`url(${item.image})`, backgroundSize: "cover", backgroundPositionX: `${item.backgroundPosX}`  }} 
-            />
-          )})
-        }
-      </motion.section>
+          <div className='text-7xl mb-6'>We Craft Fashion </div>
+          <div className='text-2xl'>with a handcrafted touch</div>
+        </motion.section>
+        
+
+        <motion.section 
+          id='Shoes Gallery'
+          className='w-full m-auto mt-12 h-96 rounded-xl flex flex-row items-center justify-center'
+          initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ amount: .1 }}
+          transition={{ duration: .5 }}
+          >
+          {
+            [
+              {id: 1, image: shoe1, backgroundPosX: "10%"}, 
+              {id: 2, image: shoe2, backgroundPosX: "35%"}, 
+              {id: 3, image: shoe3, backgroundPosX: "50%"}, 
+              {id: 4, image: shoe4, backgroundPosX: "75%"}, 
+              {id: 5, image: shoe5, backgroundPosX: "100%"}
+            ].map((item)=>{return (
+              <motion.div key={item.id} className='w-24 rounded-xl mx-[0.6rem] h-96 shadow-md'
+                initial={{ scale: 0.9, width: '6rem' }}
+                whileHover={{ scale: 1, width: '36rem', backgroundSize: "cover" }}
+                transition={{duration: 0.5, ease: "easeInOut"}} 
+                style={{ backgroundImage:`url(${item.image})`, backgroundSize: "cover", backgroundPositionX: `${item.backgroundPosX}`  }} 
+              />
+            )})
+          }
+        </motion.section>
+      </div>
 
       <Footer></Footer>
     </>

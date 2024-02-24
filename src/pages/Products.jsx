@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { addCart, getProducts, getShoes } from '../db';
-import { motion, AnimatePresence } from 'framer-motion';
+import { addCart, getProducts } from '../db';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { MdShoppingCart, MdMenu } from "react-icons/md";
@@ -56,7 +56,9 @@ const Products = () => {
         <Link to={"/"} className="text-4xl tracking-widest font-bold">KRAFTR</Link>
       </div>
       <div className='order-last text-lg mr-16'>
-        <MdShoppingCart size={35}/>
+        <Link to={"/cart"}>
+          <MdShoppingCart size={35}/>
+        </Link>
       </div>
     </div>
 
