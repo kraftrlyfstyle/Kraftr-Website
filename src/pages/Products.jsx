@@ -3,6 +3,7 @@ import { addCart, getProducts } from '../db';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import Error from '../components/Error';  
 import { MdShoppingCart, MdMenu } from "react-icons/md";
 
 const Products = () => {
@@ -35,9 +36,9 @@ const Products = () => {
 
   useEffect(() => {
     let token = localStorage.getItem("token");
-    if (token == "" || token == null || token == undefined) {
-      window.location.replace("/");
-    }
+   // if (token == "" || token == null || token == undefined) {
+     // window.location.replace("/");
+   // }
     setToken(token);
     getProductsLocal();
   }, [])
@@ -46,13 +47,15 @@ const Products = () => {
 
   return (
     <>
-  
-    <div className='flex items-center justify-between py-7 font-bold border-b border-black bg-[#F4ECE9]'>
+
+    {
+      loading? (<div>Loading...</div>) :error? (<Error></Error>) : (<>
+       <div className='flex items-center justify-between py-7 font-bold border-b border-black bg-[#F4ECE9]'>
       <div className='order-first text-lg ml-20'>
         <MdMenu size={35}/>
       </div>
       
-      <div className='tracking-widest'>
+      <div>
         <Link to={"/"} className="text-4xl tracking-widest font-bold">KRAFTR</Link>
       </div>
       <div className='order-last text-lg mr-16'>
@@ -70,8 +73,6 @@ const Products = () => {
       </div>
       <div className='flex-1'>
         
-      {
-        loading? (<div>Loading</div>) : error? (<div>Error Occurred</div>): (
           <section className='grid grid-cols-4 md:grid-cols-3'>
             {products.map((product)=>{
               return (
@@ -92,13 +93,15 @@ const Products = () => {
               </motion.div>)
             })}
           </section>
-        )
-      }
+       
       </div>
 
     </div>
 
     <Footer></Footer>
+      </>)
+    }
+  
     </>
   )
 }
