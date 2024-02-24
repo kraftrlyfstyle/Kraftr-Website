@@ -39,24 +39,24 @@ const ForgotPassword = () => {
                     className="flex flex-col items-center justify-center w-full text"
                 >
                     <input
-                        className="w-3/12 border-[1px] outline-none border-black p-3 text-lg"
-                        placeholder="old password"
-                        name="oldpassword"
+                        className="w-3/12 border-[1px] outline-none focus:border-[2px] border-black p-3 text-lg transition-all ease-in-out"
+                        placeholder="new password"
+                        name="newpassone"
                         type="password"
                     />
                     <input
-                        className="w-3/12 border-[1px] outline-none border-black p-3 my-2 text-lg"
-                        name="newpassword"
-                        placeholder="new password"
+                        className="w-3/12 border-[1px] outline-none focus:border-[2px] border-black p-3 my-4 text-lg transition-all ease-in-out"
+                        name="newpasstwo"
+                        placeholder="re-type new password"
                         type="password"
                     />
                     
                     <button
-                        className="w-3/12 border-[1px] border-black px-6 py-4 hover:bg-[#766261] hover:text-white text-lg transition-all tracking-wider hover:tracking-widest  mt-10 bg-white"
-                        type="submit"
-                    >
-                        RESET
-                    </button>
+						className="w-3/12 border-[1px] border-black px-6 py-4 bg-[#766261] text-white text-lg transition-all tracking-wider hover:tracking-widest  mt-10  hover:bg-[#7d6a69] text-center font-bold"
+						type="submit"
+					>
+						RESET
+					</button>
                 </form>
             </div>
 
