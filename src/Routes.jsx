@@ -7,6 +7,7 @@ import Product from './pages/Product';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import Checkout from './pages/Checkout';
+import ForgotPassword from './pages/ForgotPassword'
 
 const SiteRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const SiteRoutes = () => {
         <Route path='/profile' element={<Profile/>} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/checkout' element={<Checkout/>} />
+        <Route path='/forgot-password' element={<ForgotPassword/>} />
       </Routes>
     </BrowserRouter>
   )
