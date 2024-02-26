@@ -36,9 +36,9 @@ const Products = () => {
 
   useEffect(() => {
     let token = localStorage.getItem("token");
-   // if (token == "" || token == null || token == undefined) {
-     // window.location.replace("/");
-   // }
+    // if (token == "" || token == null || token == undefined) {
+    //   window.location.replace("/");
+    // }
     setToken(token);
     getProductsLocal();
   }, [])
