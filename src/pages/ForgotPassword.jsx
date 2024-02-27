@@ -52,7 +52,7 @@ const ForgotPassword = () => {
                     />
                     
                     <button
-						className="w-3/12 border-[1px] border-black px-6 py-4 bg-[#766261] text-white text-lg transition-all tracking-wider hover:tracking-widest  mt-10  hover:bg-[#7d6a69] text-center font-bold"
+						className="w-3/12 border-[1px] border-black px-6 py-4 bg-[#766261] text-white text-lg transition-all tracking-wider hover:tracking-widest  mt-10  hover:bg-[#7d6a69] text-center"
 						type="submit"
 					>
 						RESET
