@@ -79,8 +79,8 @@ function Home() {
 							>
 								Shop
 							</Link>
-							<button className="mb-4 hover:text-gray-200 transition-all">
-								About Page
+							<button className="mb-4 hover:text-gray-200 transition-all text-left">
+								About
 							</button>
 							<button className="mb-4 hover:text-gray-200 transition-all">
 								Contact Us
