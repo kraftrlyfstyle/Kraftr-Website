@@ -63,8 +63,8 @@ const ForgotPassword = () => {
 							>
 								Shop
 							</Link>
-							<button className="mb-4 hover:text-[#766261] transition-all">
-								About Page
+							<button className="mb-4 hover:text-[#766261] transition-all text-left">
+								About
 							</button>
 							<button className="mb-4 hover:text-[#766261] transition-all">
 								Contact Us
@@ -101,7 +101,7 @@ const ForgotPassword = () => {
 							setMenuBar(true);
 						}}
 					>
-						<MdMenu size={35} />
+						<MdMenu size={28} />
 					</button>
 				</div>
 			</div>
