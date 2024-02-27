@@ -44,7 +44,7 @@ const Login = props => {
 
 	return (
 		<>
-			<div className="flex w-full items-center justify-between border-b border-black py-7">
+			<div className="flex w-full items-center bg-[#F4ECE9] justify-between border-b border-black py-7">
 				<div className="order-first text-lg ml-20">
 					<Link to={"/"}></Link>
 				</div>
