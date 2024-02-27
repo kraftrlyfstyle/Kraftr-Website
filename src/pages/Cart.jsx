@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { deleteCart, getCart, getImageUrl } from "../db";
+import Error from '../components/Error'; 
 
 import { Link } from 'react-router-dom';
 
@@ -47,7 +48,7 @@ function Cart() {
   return (
     <div className='h-[100vh] w-screen flex text bg-[#F4ECE9]'>
       {
-        loading? (<div>Loading</div>) : error? (<div>Error Occurred</div>): (
+        loading? (<div>Loading</div>) : error? (<div><Error></Error></div>): (
           <div className="flex flex-col h-full w-full">
             <section className='flex flex-row items-center justify-between py-7 font-bold border-b-[1px] border-black bg-[#F4ECE9] px-4'>              
               <div className='tracking-widest'>
