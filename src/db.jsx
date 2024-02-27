@@ -107,5 +107,22 @@ async function addCart(token, product_id) {
   }
 }
 
+async function changeCart(token, product_id, quantity){
+  try {
+    let response = await axios.post(baseUrl + "user/cart/quantity", 
+      {"id": product_id, "quantity": quantity}, 
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Token " + token.toString()
+        }
+      }
+    );
+    return [true, response.data];
+  } catch (e) {
+    return [false, await JSON.stringify(e.data)];
+  }
+}
 
-export {getShoes, getShoesById, login, getCart, getProducts, deleteCart, addCart, getImageUrl}
+
+export {getShoes, getShoesById, login, getCart, getProducts, deleteCart, addCart, getImageUrl, changeCart}
