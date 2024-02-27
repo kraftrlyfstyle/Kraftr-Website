@@ -94,7 +94,7 @@ const Login = props => {
 				)}
 			</AnimatePresence>
 
-			<div className="flex w-full items-center justify-between border-b border-black py-7">
+			<div className="flex w-full items-center justify-between border-b border-black py-7 bg-[#F4ECE9]">
 				<div className="order-first text-lg ml-20">
 					<Link to={"/"}></Link>
 				</div>
