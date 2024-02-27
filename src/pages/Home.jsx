@@ -67,7 +67,7 @@ function Home() {
             </div>
             <div className="flex flex-col">
 
-              <Link to={'/login'} className='mb-4 hover:text-gray-200 transition-all '>Login</Link>
+              <Link to={'/login'} className='mb-4 hover:text-gray-200 transition-all'>Login</Link>
               <Link to={'/products'} className='mb-4 hover:text-gray-200 transition-all'>Shop</Link>
               <button className='mb-4 hover:text-gray-200 transition-all'>About Page</button>
               <button className='mb-4 hover:text-gray-200 transition-all'>Contact Us</button>
